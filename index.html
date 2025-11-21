@@ -2,301 +2,436 @@
 <html lang="vi">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Chúc mừng ngày Nhà giáo Việt Nam 20/11</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Chúc mừng ngày Nhà giáo Việt Nam 20/11</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<style>
+/* ------------------- DARK THEME ------------------- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: #3e2d1b;
-      overflow-x: hidden;
-      min-height: 100vh;
-    }
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #f5e9d8;
+  background: #1b1b1b;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
 
-    /* --- BACKGROUND AUTO ĐỔI ẢNH --- */
-    .dynamic-bg {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      z-index: -1;
-      opacity: 0;
-      transition: opacity 1.8s ease-in-out;
-    }
+/* BACKGROUND */
+.dynamic-bg {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: brightness(0.45) contrast(1.15);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 1.8s ease-in-out;
+}
 
-    /* ÁNH SÁNG HALO */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0));
-      pointer-events: none;
-      z-index: 0;
-    }
+/* Halo mờ */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle, rgba(255,255,255,0.12), rgba(0,0,0,0.9));
+  pointer-events: none;
+  z-index: 0;
+}
 
-    /* SPARKLES */
-    .sparkle {
-      position: fixed;
-      width: 6px;
-      height: 6px;
-      background: white;
-      border-radius: 50%;
-      box-shadow: 0 0 8px white;
-      opacity: 0;
-      animation: sparkleAnim 1.4s ease-out infinite;
-    }
+/* Sparkles */
+.sparkle {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: #ffd27f;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #ffb65e;
+  opacity: 0;
+  animation: sparkleAnim 1.4s ease-out infinite;
+}
+@keyframes sparkleAnim {
+  0% { transform: scale(0.2); opacity: 0; }
+  50% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.2); top: -20px; }
+}
 
-    @keyframes sparkleAnim {
-      0% {
-        transform: scale(0.2);
-        opacity: 0;
-      }
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 40px 20px;
+  z-index: 5;
+  position: relative;
+}
+.hero h1 {
+  font-size: 2.5rem;
+  color: #ffb472;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+}
+.hero p { color: #d6c1a8; }
 
-      50% {
-        opacity: 1;
-        transform: scale(1);
-      }
+/* Question */
+.question-section {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.question-label {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #e6d2bc;
+  margin-bottom: 20px;
+}
 
-      100% {
-        transform: scale(0.2);
-        opacity: 0;
-        top: -20px;
-      }
-    }
+/* Buttons */
+.subjects-grid {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+.subject-btn {
+  background: linear-gradient(180deg, #3a2f23 0%, #2c241c 100%);
+  border: 2px solid #8b6a4a;
+  color: #f1d7b8;
+  padding: 14px 24px;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+  transition: 0.3s;
+}
+.subject-btn:hover {
+  color: #ffb472;
+  border-color: #ffb472;
+  transform: translateY(-4px);
+}
 
-    /* HERO */
-    .hero {
-      text-align: center;
-      padding: 40px 20px 30px;
-      position: relative;
-      z-index: 5;
-    }
+/* Display */
+.subject-display {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 30px;
+  background: rgba(32, 26, 20, 0.8);
+  border-radius: 16px;
+  border: 2px solid #8b6a4a;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+  text-align: center;
+  backdrop-filter: blur(6px);
+}
+.subject-display img {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 12px;
+  border: 2px solid #8b6a4a;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+.subject-message {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  color: #f3e7dc;
+  line-height: 1.7;
+}
+.subject-message span {
+  display: inline-block;
+  animation: blink 2.5s ease-in-out infinite;
+}
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0.4; }
+}
 
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-      color: #c45b2d;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
-    }
+.subject-display[aria-hidden="true"] { display: none; }
 
-    .hero p {
-      color: #6b4f36;
-      font-size: 1.1rem;
-    }
+/* Falling Icons */
+.falling-letter {
+  position: fixed;
+  font-size: 26px;
+  pointer-events: none;
+  animation: fall linear forwards;
+}
+@keyframes fall {
+  0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+ 100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+}
 
-    /* QUESTION */
-    .question-section {
-      max-width: 900px;
-      margin: 0 auto 30px;
-      padding: 0 20px;
-      text-align: center;
-      position: relative;
-      z-index: 5;
-    }
+/* Music button */
+.music-control {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background: linear-gradient(135deg, #8b6a4a, #c08c52);
+  font-size: 24px;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+  cursor: pointer;
+  transition: 0.3s;
+}
+.music-control:hover { transform: scale(1.12); }
 
-    .question-label {
-      display: block;
-      margin-bottom: 20px;
-      color: #6b4f36;
-      font-size: 1.3rem;
-      font-weight: 600;
-    }
+.music-control.muted {
+  opacity: 0.3;
+  pointer-events: none;
+}
 
-    .subjects-grid {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      padding: 20px;
-    }
+/* Music prompt */
+.music-prompt {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+.music-prompt.hidden { display: none; }
 
-    .subject-btn {
-      background: linear-gradient(180deg, #fff 0%, #faf5ef 100%);
-      border: 2px solid #f0d8b7;
-      padding: 14px 24px;
-      border-radius: 12px;
-      cursor: pointer;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
-      font-size: 1rem;
-      font-weight: 500;
-      color: #5c4733;
-      transition: 0.3s;
-    }
-
-    .subject-btn:hover {
-      transform: translateY(-5px);
-      border-color: #c45b2d;
-      color: #c45b2d;
-    }
-
-    /* LỜI CHÚC */
-    .subject-display {
-      max-width: 600px;
-      margin: 0 auto 40px;
-      padding: 30px;
-      background: rgba(255, 255, 255, 0.65);
-      border-radius: 16px;
-      border: 2px solid #f3d4b3;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-      text-align: center;
-      backdrop-filter: blur(6px);
-      z-index: 5;
-      position: relative;
-    }
-
-    .subject-display img {
-      width: 100%;
-      max-width: 400px;
-      border-radius: 12px;
-      border: 2px solid rgba(196, 91, 45, 0.2);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-    }
-
-    .subject-message {
-      font-size: 1.2rem;
-      color: #4b3726;
-      margin-top: 20px;
-      line-height: 1.7;
-    }
-
-    .subject-message span {
-      display: inline-block;
-      animation: blink 2.5s ease-in-out infinite;
-      animation-fill-mode: both;
-    }
-
-    @keyframes blink {
-      0%,
-      50%,
-      100% {
-        opacity: 1;
-      }
-
-      25%,
-      75% {
-        opacity: 0.4;
-      }
-    }
-
-    .subject-display[aria-hidden="true"] {
-      display: none;
-    }
-
-    /* FALLING LETTERS */
-    .falling-letter {
-      position: fixed;
-      font-size: 24px;
-      pointer-events: none;
-      animation: fall linear forwards;
-      z-index: 999;
-    }
-
-    @keyframes fall {
-      from {
-        transform: translateY(-100px) rotate(0deg);
-        opacity: 1;
-      }
-
-      to {
-        transform: translateY(100vh) rotate(360deg);
-        opacity: 0;
-      }
-    }
-
-    /* MUSIC BUTTON */
-    .music-control {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #c45b2d, #e67e22);
-      border: 2px solid #fff;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-      cursor: pointer;
-      font-size: 24px;
-      color: #fff;
-      z-index: 1000;
-      transition: 0.3s;
-    }
-
-    .music-control:hover {
-      transform: scale(1.1);
-    }
-
-    .music-control.muted {
-      opacity: 0.6;
-      background: #6b4f36;
-    }
-
-    /* MUSIC PROMPT */
-    .music-prompt {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.7);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 10000;
-    }
-
-    .music-prompt.hidden {
-      display: none;
-    }
-
-    .music-prompt-content {
-      background: #fff8ee;
-      padding: 30px 40px;
-      border-radius: 16px;
-      border: 2px solid #f3d4b3;
-      text-align: center;
-    }
-
-    .music-prompt-btn {
-      padding: 12px 28px;
-      border-radius: 25px;
-      background: linear-gradient(135deg, #c45b2d, #e39d5f);
-      border: none;
-      color: white;
-      cursor: pointer;
-      font-size: 1.1rem;
-    }
-  </style>
+.music-prompt-content {
+  background: #2e251c;
+  padding: 30px 40px;
+  border: 2px solid #8b6a4a;
+  border-radius: 16px;
+  text-align: center;
+  color: #f1d7b8;
+}
+.music-prompt-btn {
+  margin-top: 15px;
+  padding: 12px 28px;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #8b6a4a, #c08c52);
+  color: white;
+  cursor: pointer;
+  border: none;
+}
+</style>
 </head>
 
 <body>
 
-  <!-- BACKGROUND -->
-  <div id="li1" class="dynamic-bg"></div>
-  <div id="z7246126354489_424e1c1ec39ef4fc3db6695b494d0e52.jpg" class="dynamic-bg"></div>
+<!-- BACKGROUND -->
+<div id="bg1" class="dynamic-bg"></div>
+<div id="bg2" class="dynamic-bg"></div>
 
-  <!-- FIREWORKS CANVAS -->
-  <canvas id="fireworksCanvas"></canvas>
+<!-- FIREWORKS -->
+<canvas id="fireworksCanvas"></canvas>
 
-  <div class="hero">
-    <h1>🎉 Chúc mừng ngày Nhà giáo Việt Nam 20/11 🎉</h1>
-    <p>Tri ân những người thầy, người cô đáng kính</p>
+<div class="hero">
+  <h1>🎉 Chúc mừng ngày Nhà giáo Việt Nam 20/11 🎉</h1>
+  <p>Tri ân những người thầy, người cô đáng kính</p>
+</div>
+
+<section class="question-section">
+  <label class="question-label">
+    Nhân ngày 20/11 tập thể lớp 11/11 có đôi điều muốn gởi tới cô Phú.<br>
+    Chúc cô 20/11 vui vẻ, luôn khỏe mạnh và luôn nở nụ cười trên môi.
+  </label>
+
+  <div class="subjects-grid">
+    <button class="subject-btn" data-subject-id="li">Cô Phú</button>
   </div>
+</section>
 
-  <section class="question-section">
-    <label class="question-label">
-      Nhân ngày 20/11 tập thể lớp 11/11 có đôi điều muốn gởi tới cô Phú.
-      Chúc cô 20/11 vui vẻ, luôn khỏe mạnh và luôn nở nụ cười trên môi.
-    </label>
+<div id="subjectDisplay" class="subject-display" aria-hidden="true"></div>
 
-    <div class="subjects-grid">
-      <button class="subject-btn" data-subject-id="li">Cô Phú</button>
-    </div>
-  </section>
+<!-- MUSIC -->
+<audio id="backgroundMusic" loop preload="auto">
+  <source src="audio.mp3" type="audio/mpeg" />
+</audio>
 
-  <div id="subject
+<button id="musicToggle" class="music-control">🎵</button>
+
+<div id="musicPrompt" class="music-prompt hidden">
+  <div class="music-prompt-content">
+    <h3>🎵 Bật nhạc nền</h3>
+    <p>Nhấn nút bên dưới để phát nhạc</p>
+    <button class="music-prompt-btn" onclick="startMusicFromPrompt()">Phát nhạc</button>
+  </div>
+</div>
+
+<script>
+/* ---------------- DATA ---------------- */
+const subjects = [
+  {
+    id: 'li',
+    name: 'Cô Phú (Vật Lí)',
+    image: 'li.jpg',
+    messages: [
+      "Chúc cô Phú luôn mạnh khỏe, hạnh phúc và tràn đầy nhiệt huyết...",
+      "Chúc cô Phú thật nhiều sức khỏe và niềm vui...",
+      "Chúc cô Phú – người truyền năng lượng tích cực..."
+    ]
+  }
+];
+
+function showSubject(subject) {
+  const display = document.getElementById('subjectDisplay');
+  const msg = subject.messages[Math.floor(Math.random() * subject.messages.length)];
+
+  let messageHTML = "";
+  for (let i = 0; i < msg.length; i++) {
+    let char = msg[i] === " " ? "&nbsp;" : msg[i];
+    messageHTML += `<span style="animation-delay:${i * 0.07}s">${char}</span>`;
+  }
+
+  display.innerHTML = `
+    <img src="${subject.image}">
+    <div class="subject-message">${messageHTML}</div>
+  `;
+  display.setAttribute("aria-hidden", "false");
+}
+
+document.querySelector('[data-subject-id="li"]').addEventListener("click", () => {
+  showSubject(subjects[0]);
+});
+
+/* ---------------- FALLING ICONS ---------------- */
+const letters = ['❤️','💐','🌹','🎉','⭐','✨','💝','🎁'];
+setInterval(() => {
+  const el = document.createElement("div");
+  el.className = "falling-letter";
+  el.textContent = letters[Math.floor(Math.random() * letters.length)];
+  el.style.left = Math.random() * 100 + "%";
+  el.style.animationDuration = (Math.random() * 3 + 2) + "s";
+  document.body.appendChild(el);
+  setTimeout(() => el.remove(), 5000);
+}, 500);
+
+/* ---------------- SPARKLES ---------------- */
+setInterval(() => {
+  const s = document.createElement("div");
+  s.className = "sparkle";
+  s.style.left = Math.random() * window.innerWidth + "px";
+  s.style.top = Math.random() * window.innerHeight + "px";
+  document.body.appendChild(s);
+  setTimeout(() => s.remove(), 1500);
+}, 400);
+
+/* ---------------- BACKGROUND SWITCH ---------------- */
+const backgrounds = ["li.jpg", "z7246126354489_424e1c1ec39ef4fc3db6695b494d0e52.jpg"];
+
+let bgIndex = 0;
+let activeBG = 1;
+
+function changeBackground() {
+  const next = (bgIndex + 1) % backgrounds.length;
+  const bgA = document.getElementById(`bg${activeBG}`);
+  const bgB = document.getElementById(`bg${activeBG === 1 ? 2 : 1}`);
+
+  bgA.style.backgroundImage = `url('${backgrounds[bgIndex]}')`;
+  bgB.style.backgroundImage = `url('${backgrounds[next]}')`;
+
+  bgA.style.opacity = 1;
+  bgB.style.opacity = 0;
+
+  bgIndex = next;
+  activeBG = activeBG === 1 ? 2 : 1;
+}
+changeBackground();
+setInterval(changeBackground, 8000);
+
+/* ---------------- FIREWORKS ---------------- */
+const fwCanvas = document.getElementById("fireworksCanvas");
+const fwCtx = fwCanvas.getContext("2d");
+
+function resizeFW() {
+  fwCanvas.width = window.innerWidth;
+  fwCanvas.height = window.innerHeight;
+}
+resizeFW();
+window.addEventListener("resize", resizeFW);
+
+let fireworks = [];
+
+function spawnFirework() {
+  const x = Math.random() * fwCanvas.width;
+  const y = Math.random() * (fwCanvas.height * 0.5);
+  const particles = [];
+
+  for (let i = 0; i < 40; i++) {
+    const angle = Math.random() * Math.PI * 2;
+    const speed = Math.random() * 4 + 1;
+    particles.push({
+      x, y,
+      vx: Math.cos(angle)*speed,
+      vy: Math.sin(angle)*speed,
+      alpha: 1,
+      size: Math.random()*3+1
+    });
+  }
+  fireworks.push(particles);
+}
+
+function animateFireworks() {
+  fwCtx.clearRect(0,0,fwCanvas.width,fwCanvas.height);
+
+  fireworks.forEach((particles, index) => {
+    particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vy += 0.02;
+      p.alpha -= 0.01;
+
+      fwCtx.globalAlpha = p.alpha;
+      fwCtx.fillStyle = `hsl(${Math.random()*360},90%,65%)`;
+      fwCtx.beginPath();
+      fwCtx.arc(p.x, p.y, p.size, 0, Math.PI*2);
+      fwCtx.fill();
+    });
+
+    if (particles[0].alpha <= 0) fireworks.splice(index,1);
+  });
+
+  requestAnimationFrame(animateFireworks);
+}
+setInterval(spawnFirework, 1800);
+animateFireworks();
+
+/* ---------------- MUSIC ---------------- */
+let musicStarted = false;
+const bgm = document.getElementById("backgroundMusic");
+const toggle = document.getElementById("musicToggle");
+const promptBox = document.getElementById("musicPrompt");
+
+function startMusic() {
+  if (musicStarted) return;
+
+  const p = bgm.play();
+  if (p) {
+    p.then(() => {
+      musicStarted = true;
+      toggle.classList.add("muted"); // Ẩn nút nhạc
+      promptBox.classList.add("hidden");
+    }).catch(() => {
+      promptBox.classList.remove("hidden");
+    });
+  }
+}
+window.startMusicFromPrompt = () => startMusic();
+
+toggle.addEventListener("click", () => {
+  if (bgm.paused) {
+    bgm.play();
+    toggle.classList.add("muted");
+  } else {
+    bgm.pause();
+    toggle.classList.remove("muted");
+  }
+});
+
+/* Tự bật khi load */
+window.addEventListener("load", () => {
+  document.querySelector('[data-subject-id="li"]').click();
+  setTimeout(() => startMusic(), 800);
+});
+document.addEventListener("click", startMusic, { once: true });
+</script>
+
+</body>
+</html>
